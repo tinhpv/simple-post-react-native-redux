@@ -1,7 +1,9 @@
 import React, {useEffect} from 'react';
 import {View, Text, StyleSheet, FlatList} from 'react-native';
 import {connect} from 'react-redux';
+
 import {fetchPosts} from '../actions';
+import UserBox from '../components/UserBox';
 
 const IndexScreen = props => {
   useEffect(() => {
@@ -16,7 +18,7 @@ const IndexScreen = props => {
         renderItem={({item}) => {
           return (
             <View style={styles.itemBody}>
-              <Text style={styles.itemText}>{item.id}</Text>
+              <UserBox userId={item.userId} />
               <Text style={{...styles.itemText, ...styles.rightBox}}>
                 {item.body}
               </Text>
