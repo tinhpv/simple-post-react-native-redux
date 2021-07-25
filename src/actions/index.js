@@ -1,5 +1,12 @@
 import postPlaceholder from '../apis/postPlaceholder';
 
+export const fetchPostsAndUsers = () => async (dispatch, getState) => {
+  await dispatch(fetchPosts());
+  const posts = getState().posts;
+  const userIds = [...new Set(posts.map(post => post.userId))];
+  userIds.forEach(id => dispatch(fetchUser(id)));
+};
+
 export const fetchPosts = () => async dispatch => {
   const response = await postPlaceholder.get('/posts');
   dispatch({type: 'FETCH_POSTS', payload: response.data});

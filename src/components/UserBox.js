@@ -1,14 +1,8 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {View, Text} from 'react-native';
 import {connect} from 'react-redux';
 
-import {fetchUser} from '../actions/index';
-
 const UserBox = props => {
-  useEffect(() => {
-    props.fetchUser(props.userId);
-  }, [props]);
-
   return <View>{props.user ? <Text>{props.user.name}</Text> : null}</View>;
 };
 
@@ -20,4 +14,4 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-export default connect(mapStateToProps, {fetchUser})(UserBox);
+export default connect(mapStateToProps)(UserBox);

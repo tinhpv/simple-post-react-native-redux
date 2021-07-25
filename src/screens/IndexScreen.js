@@ -2,13 +2,13 @@ import React, {useEffect} from 'react';
 import {View, Text, StyleSheet, FlatList} from 'react-native';
 import {connect} from 'react-redux';
 
-import {fetchPosts} from '../actions';
+import {fetchPostsAndUsers} from '../actions';
 import UserBox from '../components/UserBox';
 
 const IndexScreen = props => {
   useEffect(() => {
-    props.fetchPosts();
-  }, [props]);
+    props.fetchPostsAndUsers();
+  });
 
   return (
     <View>
@@ -52,4 +52,4 @@ const mapStateToProps = state => {
   return {posts: state.posts};
 };
 
-export default connect(mapStateToProps, {fetchPosts})(IndexScreen);
+export default connect(mapStateToProps, {fetchPostsAndUsers})(IndexScreen);
