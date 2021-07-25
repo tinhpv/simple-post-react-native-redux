@@ -8,7 +8,8 @@ import UserBox from '../components/UserBox';
 const IndexScreen = props => {
   useEffect(() => {
     props.fetchPostsAndUsers();
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <View>
